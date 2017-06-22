@@ -174,7 +174,7 @@ var imgFileList = [
 
   var chartIsRendered = false;
   function renderChart() {
-    // console.log('trying to renderChart');
+    console.log('trying to renderChart');
     if (chartIsRendered) {
       return;
     }
@@ -212,7 +212,7 @@ var imgFileList = [
     var currentPhoto;
     for (var i = 0; i < imgList.length; i++) {
       currentPhoto = imgList[i];
-      data.labels.push(currentPhoto.name)
+      data.labels.push(currentPhoto.name);
       data.datasets[0].data.push(currentPhoto.numClicked);
       data.datasets[1].data.push(currentPhoto.numDisplayed);
     }
