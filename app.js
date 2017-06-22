@@ -223,7 +223,6 @@ var imgFileList = [
     });
   }
 
-
   // function createTable() {
   //   var table = document.createElement('table');
   //   var tableBody = document.createElement("tbody");
