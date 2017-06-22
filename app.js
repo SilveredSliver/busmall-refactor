@@ -1,8 +1,8 @@
 'use strict'
 
 // var cacheData = JSON.parse(localStorage.pictureClickData);
-//   if (cacheData.length > 0) {
-//       alert ('you already have cache data with ' + cacheData.length + 'clicks!');
+//   if (cacheData.pictureClickData.length > 0) {
+//       alert ('you already have cache data with ' + cacheData.length + ' clicks!');
 //   }
 var imgDirectory = 'img';
 
@@ -37,6 +37,7 @@ var imgFileList = [
   'usb.gif',
   'water-can.jpg',
   'wine-glass.jpg' ];
+
   var imgList = [];//starts as an empty array
 
   for (var i = 0; i < imgFileList.length; i++) {
@@ -46,18 +47,21 @@ var imgFileList = [
   }//this function runs until imgList has all 20 images pushed into it and there are 20 elements in the array imagFileList
 
 
+  // localStorage.pictureClickData = JSON.stringify(imgList);
+  // if (localStorage) {
+  //   console.log('HI');
+  // } else {
+  //   displayImages();
+  // };
+
   var totalNumClicked = 0;
 
   var b1 = document.getElementById('b1');
   function addClickEvent1() {
     totalNumClicked++;
     imgList[curThree.theImages[0]].numClicked++;
-    if (totalNumClicked < 26) {
-      displayImages()
-    } else {
-      renderChart();
-    localStorage.pictureClickData = JSON.stringify(imgList);
-    }
+    if (totalNumClicked < 26) displayImages()
+    else renderChart();
     // localStorage.pictureClickData = JSON.stringify(imgList);
     // console.log('LOCALSTORAGEIMAGE; ', localStorage.pictureClickData[1]);
     // if (localStorage) {
@@ -74,28 +78,25 @@ var imgFileList = [
   function addClickEvent2() {
     totalNumClicked++;
     imgList[curThree.theImages[1]].numClicked++;
-    if (totalNumClicked < 26) {
-      displayImages()
-    } else {
-      renderChart();
-    localStorage.pictureClickData = JSON.stringify(imgList);
-      }
+    if (totalNumClicked < 26) displayImages()
+    else renderChart();
+    if (localStorage) {
+    // localStorage.pictureClickData = JSON.stringify(imgList);
+  }
   // if (localStorage.images) {
   //   imgList = JSON.parse(localStorage.images)
   // } else {
   //   displayImages();
-  }
+  // }
   b2.addEventListener('click', addClickEvent2);
 
   var b3 = document.getElementById('b3');
   function addClickEvent3() {
     totalNumClicked++;
     imgList[curThree.theImages[2]].numClicked++;
-    if (totalNumClicked < 26){
-      displayImages()
-    } else {
-      renderChart();
-    localStorage.pictureClickData = JSON.stringify(imgList);
+    if (totalNumClicked < 26) displayImages()
+    else renderChart();
+    // localStorage.pictureClickData = JSON.stringify(imgList);
   }
   // if (localStorage.images) {
   //   imgList = JSON.parse(localStorage.images)
@@ -156,7 +157,7 @@ var imgFileList = [
     document.getElementById('b3').src = imgPath3;
 
     // console.log('num clicked ' + totalNumClicked);
-
+    localStorage.pictureClickData = JSON.stringify(imgList);
     // localStorage.pictureClickData = JSON.stringify(imgList);
   }
 
@@ -222,74 +223,3 @@ var imgFileList = [
       data: data,
     });
   }
-
-  // function createTable() {
-  //   var table = document.createElement('table');
-  //   var tableBody = document.createElement("tbody");
-  //   for (var i = 0; i < imgFileList.length; i++) {
-  //
-  //     var row = document.createElement('tr');
-  //     var cell = document.createElement('td');
-  //     cell.appendChild(document.createTextNode(imgFileList[i]));
-  //     row.appendChild(cell);
-  //     cell.appendChild(document.createTextNode(imgList[i].numDisplayed));
-  //   }
-  //   table.appendChild(tableBody);
-  //   document.body.appendChild(table);
-  //   }
-  //
-  //   function generateRow(obj) {
-  //     var row = document.createElement('tr');
-  //     var imgName = document.createElement('td');
-  //     imgName.textContent = obj.name;
-  //     row.appendChild(imgName);
-  //
-  //     var numDisplayed = document.createElement('td');
-  //     numDisplayed.textContent = obj.numDisplayed;
-  //     row.appendChild(numDisplayed);
-  //
-  //     var numClicks = document.createElement('td');
-  //     numClicks.textContent = obj.numClicks;
-  //     row.appendChild(numClicks);
-  //
-  //     return row;
-  //   };
-  //
-  //   var myRow = generateRow(imgList[0]);
-  //   console.log(myRow);
-  //
-  //   function generateAllRows(myTable, imgList) {
-  //     for (i = 0; i < imgList.length; i++) {
-  //       var nextRow = new generateRow(imgList[i]);
-  //       myTable.appendChild(nextRow);
-  //       console.log(nextRow);
-  //     }
-  //     return myTable;
-  //   }
-  //
-  //
-  //   function generateUserSessionTable() {
-  //     var table = document.createElement('table');//this is a  div tag created in javascript
-  //     table.setAttribute('id', 'userSessionTable');
-  //
-  //     //table.setAttribute('id', 'store-report-table');
-  //     document.body.appendChild(table);
-  //
-  //     var headingRow = document.createElement('tr');
-  //     table.appendChild(headingRow);
-  //
-  //     //add 'th' to table with text of 'Store Name'
-  //     var imageHeadingName = document.createElement('th');
-  //     imageHeadingName.textContent = 'Image Name';
-  //     table.appendChild(imageHeadingName);
-  //     var numberOfDisplays = document.createElement('th');
-  //     numberOfDisplays.textContent = 'Number of Displays';
-  //     table.appendChild(numberOfDisplays);
-  //     var clicks = document.createElement('th');
-  //     clicks.textContent = 'Number of Clicks';
-  //     table.appendChild(clicks);
-  //
-  //
-  //
-  //     return table;
-  //   }
